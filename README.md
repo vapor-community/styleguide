@@ -6,11 +6,11 @@ The Vapor style guide is a perspective on how to write Vapor application code th
 # Maintainers 
 This style guide was written and is maintained by the following Vapor members: 
 
-- Andrew (@andrewangeta)
-- Jimmy (@mcdappdev) (Project manager)
-- Jonas (@joscdk)
-- Tanner (@tanner0101)
-- Tim (@0xtim)
+- Andrew ([@andrewangeta](https://github.com/andrewangeta))
+- Jimmy ([@mcdappdev](https://github.com/mcdappdev)) (Project manager)
+- Jonas ([@joscdk](https://github.com/joscdk))
+- Tanner ([@tanner0101](https://github.com/tanner0101))
+- Tim ([@0xtim](https://github.com/0xtim))
 
 # Contributing 
 To contribute to this guide, please submit a pull request that includes your proposed changes as well as logic to support your addition or modification. Pull requests will be reviewed by the maintainers and the rationale behind the maintainers’ decision to accept or deny the changes will be posted in the pull request. 
