@@ -16,20 +16,29 @@ This style guide was written and is maintained by the following Vapor members:
 To contribute to this guide, please submit a pull request that includes your proposed changes as well as logic to support your addition or modification. Pull requests will be reviewed by the maintainers and the rationale behind the maintainers’ decision to accept or deny the changes will be posted in the pull request. 
 
 # Table of Contents
-- Application Structure
-- Configuration 
-- Credentials
-- File Naming
-- Architecture
-- Entities
-- Routes and Controllers 
-- Async
-- Testing
-- Fluent
-- Leaf
-- Errors
-- 3rd Party Providers
-- Overall Advice 
+- [Application Structure](#application-structure)
+    + [Controllers Folder](#controllers-folder)
+    + [Middleware Folder](#middleware-folder)
+    + [Models Folder](#models-folder)
+    + [Setup Folder](#setup-folder)
+    + [Utilities Folder](#utilities-folder)
+- [Configuration](#configuration)
+    + [Files](#files)
+    + [configure.swift](#configureswift)
+    + [routes.swift](#routesswift)
+    + [migrate.swift](#migrateswift)
+    + [repositories.swift](#repositoriesswift)
+- [Credentials](#credentials)
+- [File Naming](#file-naming)
+- [Architecture](#architecture)
+- [Entities](#entities)
+- [Async](#async)
+- [Testing](#testing)
+- [Fluent](#fluent)
+- [Leaf](#leaf)
+- [Errors](#errors)
+- [3rd Party Providers](#3rd-party-providers)
+- [Overall Advice](#overall-advice)
 
 # Application Structure 
 The structure of your Vapor application is important from a readability standpoint, but also in terms of functionality. Application structure refers to a few different aspects of the Vapor ecosystem, but in particular, it is the way in which you structure your file, folders, and assets. 
