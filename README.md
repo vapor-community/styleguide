@@ -784,7 +784,25 @@ throw Abort(.badRequest, reason: “Could not get data from external API.”)
 ```
 
 # 3rd Party Providers 
-To-do
+When building third party providers for Vapor, it's important to have a certain consistency that users will be able to become famaliar with when switching or adding new providers. Although Vapor is very young there are already certain patterns that make sense when writing providers.
+### Naming
+When naming a provider it's best to name the project itself that will be on github as part of the vapor community organization hyphenated with the extension `-provider`. For example if our provider is named `FooBar` then the project name would be named in the following way:
+`foo-bar-provider`.
+
+When creating a provider library, the Vapor community has agreed to name things while omiting phrases like `Provder` or `Package`. Take the StripeProvider for example, while the name of the project itself can be name `StripeProvider` the library name should be just the product itself
+```swift
+let package = Package(
+    name: "StripeProvider",
+    products: [
+        .library(name: "Stripe", targets: ["Stripe"])
+    ],
+)
+```
+This allows for easy to read and clean import statements:
+`import Stripe` rather than `import StripeProvider`.
+
+
+
 
 # Overall Advice
 - Use `//MARK:` to denote sections of your controllers or configuration so that it is easier for other project members to find critically important areas.
