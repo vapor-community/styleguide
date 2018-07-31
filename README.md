@@ -32,6 +32,7 @@ To contribute to this guide, please submit a pull request that includes your pro
 - [File Naming](#file-naming)
 - [Architecture](#architecture)
 - [Entities](#entities)
+- [Routes And Controllers](#routes-and-controllers)
 - [Async](#async)
 - [Testing](#testing)
 - [Fluent](#fluent)
@@ -371,7 +372,7 @@ public final class User {
 
 As a general rule, try to abstract logic into functions on the models to keep the controllers clean.
 
-Routes and Controllers  
+# Routes and Controllers  
 We suggest combining your routes into your controller to keep everything central. Controllers serve as a jumping off point for executing logic from other places, namely repositories and model functions. 
 
 Routes should be separated into functions in the controller that take a `Request` parameter and return a `ResponseEncodable` type. 
@@ -432,6 +433,32 @@ router.get(“/user”, Int.parameter, use: user)
 
 ```swift
 router.get(“/user”, User.parameter, use: user)
+```
+
+When decoding a request, opt to decode the `Content` object when registering the route instead of in the route. 
+
+**Bad:**
+
+```swift
+router.post(“/update, use: update)
+
+func update(req: Request) throws -> Future<User> {
+    return req.content.decode(User.self).map { user in 
+        //do something with user
+
+        return user
+    }
+} 
+```
+
+**Good:**
+
+```swift
+router.post(User.self, at: “/update, use: update)
+
+func update(req: Request, content: User) throws -> Future<User> {
+    return content.save(on: req)
+} 
 ```
 
 Controllers should only cover one idea/feature at a time. If a feature grows to encapsulate a large amount of functionality, routes should be split up into multiple controllers and organized under one common feature folder in the `Controllers` folder. For example, an app that handles generating a lot of analytical/reporting views should break up the logic by specific report to avoid cluttering a generic `ReportsViewController.swift`
