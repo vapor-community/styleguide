@@ -789,7 +789,7 @@ When building third party providers for Vapor, it's important to have a certain 
 When naming a provider it's best to name the project itself that will be on github as part of the vapor community organization hyphenated with the extension `-provider`. For example if our provider is named `FooBar` then the project name would be named in the following way:
 `foo-bar-provider`.
 
-When creating a provider library, the Vapor community has agreed to name things while omiting phrases like `Provder` or `Package`. Take the StripeProvider for example, while the name of the project itself can be name `StripeProvider` the library name should be just the product itself
+When creating a provider library, the Vapor community has agreed to name things while omiting phrases like `Provder` or `Package`. Take the StripeProvider for example, while the name of the project itself can be named `StripeProvider` the library name should be just the product itself:
 ```swift
 let package = Package(
     name: "StripeProvider",
@@ -800,8 +800,6 @@ let package = Package(
 ```
 This allows for easy to read and clean import statements:
 `import Stripe` rather than `import StripeProvider`.
-
-
 
 
 # Overall Advice
