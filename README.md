@@ -188,7 +188,7 @@ You should call this function from `configure.swift` like this:
     services.register(commandsConfig)
 ```
 
-> If your app doesn't use `Fluent` you can ommit this file.
+> If your app doesn't use custom `Command`s you can ommit this file.
 
 ### content.swift
 
@@ -352,14 +352,14 @@ struct APIKeyStorage: Service {
 
 ```swift
 services.register { container -> APIKeyStorage in
-    return APIKeyStorage(apiKey: “MY-SUPER-SECRET-API-KEY”)
+    return APIKeyStorage(apiKey: "MY-SUPER-SECRET-API-KEY")
 }
 ```
 
 \***\*Good:\*\***
 
 ```swift
-guard let apiKey = Environment.get(“api-key”) else { throw Abort(.internalServerError) }
+guard let apiKey = Environment.get("api-key") else { throw Abort(.internalServerError) }
 services.register { container -> APIKeyStorage in
     return APIKeyStorage(apiKey: apiKey)
 }
@@ -586,13 +586,13 @@ When creating a path like `/user/:userId`, always use the most specific `Paramet
 **Bad:**
 
 ```swift
-router.get(“/user”, Int.parameter, use: user)
+router.get("/user", Int.parameter, use: user)
 ```
 
 **Good:**
 
 ```swift
-router.get(“/user”, User.parameter, use: user)
+router.get("/user", User.parameter, use: user)
 ```
 
 <hr/>
@@ -602,7 +602,7 @@ When decoding a request, opt to decode the `Content` object when registering the
 **Bad:**
 
 ```swift
-router.post(“/update, use: update)
+router.post("/update", use: update)
 
 func update(req: Request) throws -> Future<User> {
     return req.content.decode(User.self).map { user in
@@ -616,7 +616,7 @@ func update(req: Request) throws -> Future<User> {
 **Good:**
 
 ```swift
-router.post(User.self, at: “/update, use: update)
+router.post(User.self, at: "/update", use: update)
 
 func update(req: Request, content: User) throws -> Future<User> {
     return content.save(on: req)
@@ -988,7 +988,7 @@ throw Abort(.badRequest)
 **Good:**
 
 ```swift
-throw Abort(.badRequest, reason: “Could not get data from external API.”)
+throw Abort(.badRequest, reason: "Could not get data from external API.")
 ```
 
 # 3rd Party Providers 
