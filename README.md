@@ -445,7 +445,7 @@ func publicUser() -> PublicUser {
 **Good:**
 
 ```swift
-var public: PublicUser {
+var `public`: PublicUser {
     return PublicUser(user: self)
 }
 ```
