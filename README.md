@@ -236,7 +236,7 @@ public func databases(config: inout DatabasesConfig) throws {
     guard let dbConfig = MySQLDatabaseConfig(url: databaseUrl) else { throw Abort(.internalServerError) }
 
     /// Register the databases
-    config.add(database: MySQLDatabase(config: dbConfig), as: .psql)
+    config.add(database: MySQLDatabase(config: dbConfig), as: .mysql)
 
     ...
 }
